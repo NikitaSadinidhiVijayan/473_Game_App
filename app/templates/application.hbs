@@ -10,13 +10,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Trivia</a>
+        {{#link-to 'index'}}<a class="navbar-brand">Trivia</a>{{/link-to}}
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="top-navbar-collapse">
         <ul class="nav navbar-nav">
           <li>
-            <a href="/rooms">Rooms</a>
+            {{#link-to 'rooms'}}Rooms{{/link-to}}
           </li>
           <li>
             <a href="#">Test Link</a>
