@@ -11,6 +11,10 @@ Router.map(function() {
   this.route('rooms', function() {
     this.route('new');
   });
+  this.route('players', function() {
+    this.route('new');
+  });
+  this.route('player', function() {});
 });
 
 export default Router;
