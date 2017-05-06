@@ -39,6 +39,7 @@
     "ember-source": "~2.12.0",
     "ember-websockets": "^7.0.2",
     "ember-welcome-page": "^2.0.2",
+    "emberfire": "^2.0.7",
     "emberx-select": "^3.0.1",
     "loader.js": "^4.2.3"
   },

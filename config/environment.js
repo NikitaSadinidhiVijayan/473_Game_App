@@ -20,6 +20,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    // Eric: Firebase Integration
+    // For development, replace the values below with your own
+    // Do not add this file to commit since it has your API key!
+    firebase: {
+      apiKey: 'xyz',
+      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
+      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseio.com',
+      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
     }
   };
 
