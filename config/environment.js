@@ -26,10 +26,10 @@ module.exports = function(environment) {
     // For development, replace the values below with your own
     // Do not add this file to commit since it has your API key!
     firebase: {
-      apiKey: 'xyz',
-      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
-      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseio.com',
-      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+      apiKey: 'AIzaSyC1f1JP8qFiNGJyy8Og_cd9VsLTP2bjVCs',
+      authDomain: 'trivia-66f08.firebaseapp.com',
+      databaseURL: 'https://trivia-66f08.firebaseio.com/',
+      storageBucket: 'trivia-66f08.appspot.com',
     }
   };
 

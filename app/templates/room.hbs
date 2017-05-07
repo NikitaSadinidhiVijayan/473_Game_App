@@ -33,11 +33,9 @@
           </label>
         </div>
       </ul>
-      <p><b>Answer:</b> {{card.reveal}}</p>
-    <button {{action 'answerCheck'}} class="btn btn-primary">Submit</button>
+      <!-- <p><b>Answer:</b> {{card.reveal}}</p> -->
+    <button {{action 'answerCheck' card.answer}} class="btn btn-primary">Submit</button>
     {{/each}}
   </div>
 </form>
-{{card.question}}
-
 {{outlet}}
