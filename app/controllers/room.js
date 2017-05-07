@@ -2,8 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    test() {
-      // Just here for show. Doesn't do anything.
-    }
+    answerCheck: function() {
+      var answer = this.get('choice');
+      alert('You selected answer: ' + answer);
+    },
   }
 });
