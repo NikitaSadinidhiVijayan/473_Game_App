@@ -1,3 +1,6 @@
+# Prevent API key from being pushed
+/config/environment.js
+
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
