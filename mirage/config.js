@@ -24,5 +24,6 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 
-  this.get('/cards'); // Fake REST API route for cards made by fixtures
+  // TODO: Uncomment below for Mirage
+  // this.get('/cards'); // Fake REST API route for cards made by fixtures
 }
