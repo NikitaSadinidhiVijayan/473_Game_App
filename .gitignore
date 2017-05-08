@@ -1,5 +1,6 @@
 # Prevent API key from being pushed
 /config/environment.js
+/trivia-server/DO_NOT_UPLOAD.json
 
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
