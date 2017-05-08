@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
+  model: function() {
     //return this.store.findAll('card'); // this returns all the questions
 
     let triviaCard = this.store.findAll('card').then(function(item){
@@ -15,5 +15,10 @@ export default Ember.Route.extend({
     });
 
     return triviaCard;
+  },
+  actions: {
+    invalidateModel: function(){
+      this.refresh();
+    }
   }
 });
