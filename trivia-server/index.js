@@ -8,9 +8,9 @@ const ws = new WebSocket.Server({
 
 var messages = [];
 var active = false;
-var current_card;
-var cards = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
-var INTERVAL = 10000; // time in ms
+var current_card = null;
+var cards = ['-KjVZpn1a7zVob3Hmt4y', '-KjVhW7W2bSao01Amh8r', '-KjVj68PhBvyuiS2NiBm'];
+var INTERVAL = 15000; // time in ms
 
 console.log('websockets server started' );
 
@@ -34,10 +34,11 @@ ws.on('connection', function (socket) {
 
 function gameLoop () {
   setInterval(function() {
-    if(active) {
-      current_card = cards[random(7)];
+    if(active) { // Server does nothing until client connects; waste no cards
+      current_card = cards[random(2)];
       ws.clients.forEach(function (clientSocket) {
-        clientSocket.send(current_card);
+        let obj = { "action": "new_card", "data": current_card };
+        clientSocket.send(JSON.stringify(obj));
       });
     }
   }, INTERVAL);

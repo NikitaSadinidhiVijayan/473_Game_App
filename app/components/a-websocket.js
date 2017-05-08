@@ -1,5 +1,15 @@
 import Ember from 'ember';
 
+// Tries to parse JSON
+function isJSON(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
 export default Ember.Component.extend({
   /*
     1. First step you need to do is inject the websockets service into your object.
@@ -48,7 +58,18 @@ export default Ember.Component.extend({
   },
 
   myMessageHandler(event) {
-    console.log(`Message: ${event.data}`);
+    // Attempt to parse the string for JSON
+    if(isJSON(event.data)) {
+      let obj = JSON.parse(event.data);
+      console.log(obj);
+
+      // Starts change of card
+      if (obj.action === 'new_card') {
+        this.actions.changeCard(obj.data); // changeCard is action in a-websocket
+      }
+    } else {
+      console.log(`Message: ${event.data}`); // Not JSON, so just print String
+    }
   },
 
   myCloseHandler(event) {
@@ -69,6 +90,10 @@ export default Ember.Component.extend({
       }
 
       socket.send(`You answered: ${userAnswer}`);
+    },
+    changeCard(card_id) {
+      console.log('Changing card to ' + card_id);
+      // TODO: Update view to new card id
     }
   }
 });
