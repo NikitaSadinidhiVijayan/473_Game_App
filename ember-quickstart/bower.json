@@ -1,5 +1,6 @@
 {
   "name": "ember-quickstart",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7"
   }
 }
