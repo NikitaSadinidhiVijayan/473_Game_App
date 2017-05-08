@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       will retrieve a cached websocket if one exists or in this case it
       will create a new one for us.
     */
-    const socket = this.get('websockets').socketFor('ws://localhost:8000/');
+    const socket = this.get('websockets').socketFor('ws://localhost:3001/');
 
     /*
       3. The next step is to define your event handlers. All event handlers
@@ -59,7 +59,16 @@ export default Ember.Component.extend({
   actions: {
     sendButtonPressed() {
       const socket = this.get('socketRef');
-      socket.send('Hello Websocket World');
+      const userAnswer = this.get('user-answer');
+      const cardAnswer = this.get('card-answer');
+
+      if (cardAnswer === userAnswer){
+        alert('Congratualtions, You got it Correct!');
+      } else {
+        alert('Sorry, That is Incorrect!');
+      }
+
+      socket.send(`You answered: ${userAnswer}`);
     }
   }
 });

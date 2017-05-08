@@ -1,5 +1,3 @@
-{{ a-websocket }}
-
 <h1>Welcome to the Triva Room!</h1>
 <br>
 <form class="triviaForm">
@@ -33,9 +31,10 @@
           </label>
         </div>
       </ul>
-      <!-- <p><b>Answer:</b> {{card.reveal}}</p> -->
-    <button {{action 'answerCheck' card.answer}} class="btn btn-primary">Submit</button>
+    <!-- <button {{action 'answerCheck' card.answer}} class="btn btn-primary">Submit</button> -->
+    {{a-websocket card-answer=card.answer user-answer=choice}}
     {{/each}}
   </div>
 </form>
+
 {{outlet}}
