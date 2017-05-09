@@ -6,6 +6,11 @@ import Firebase from 'firebase';
 export default Ember.Route.extend({
   firebaseApp: Ember.inject.service(),
 
+//  model: function(){
+//    const ref = this.get('firebaseApp').auth();
+//    return
+  //}
+
   actions: {
     login: function() {
       var controller = this.get('controller');
@@ -14,10 +19,13 @@ export default Ember.Route.extend({
       const ref = this.get('firebaseApp').auth();
 
       return ref.signInWithEmailAndPassword(email, pass).catch(function(error) {
-        console.log('Github sign in error', error);
+        console.log('Sign In error', error);
       }).then(function() {
         //console.log(user);
-        this.transitionTo('room');
+        //this.transitionTo('room');
+        ref.onAuthStateChanged(function(user){
+          console.log('user', user)
+        });
       }.bind(this));
     },
 
@@ -26,7 +34,7 @@ export default Ember.Route.extend({
     logout: function() {
       var controller = this.get('controller');
       const ref = this.get('firebaseApp').auth();
-      ref.auth().signOut().then(function() {
+      ref.signOut().then(function() {
         this.transitionTo('login');
       }.bind(this));
     },
@@ -38,18 +46,26 @@ export default Ember.Route.extend({
     github: function() {
       const ref = this.get('firebaseApp').auth();
       var provider = new Firebase.auth.GithubAuthProvider();
-      
+
       provider.addScope('profile');
       provider.addScope('user');
 
-      Firebase.auth().signInWithPopup(provider).then(function(result) {
+      return ref.signInWithPopup(provider).then(function(result) {
         var token = result.credential.accessToken;
         var user = result.user;
-      }).catch(function(error) {
-        console.log('Github sign in error', error);
-      }).then(function() {
-        this.transitionTo('room');
-      }.bind(this));
+
+        ref.onAuthStateChanged(function(user){
+        console.log('user', user);});
+      })
+
+      //.catch(function(error) {
+      //  console.log('Github sign in error', error);
+      //});
+      //.then(function() {
+        //ref.onAuthStateChanged(function(user){
+      //  console.log('user', user)
+      //  this.transitionTo('room');
+      //}.bind(this));
     }
   }
 
