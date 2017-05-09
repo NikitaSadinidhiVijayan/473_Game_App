@@ -16,6 +16,8 @@ Router.map(function() {
   });
   this.route('player', function() {});
   this.route('cards');
+  this.route('login');
+  this.route('welcomepage');
 });
 
 export default Router;
