@@ -46,7 +46,7 @@
             <p class="navbar-text">Logged in as {{session.currentUser.displayName}}</p>
             <button class="btn btn-default navbar-btn" {{action "signOut"}}>Sign out</button>
           {{else}}
-            <button class="btn btn-default navbar-btn" {{action "signIn" "github"}}>Sign in with GitHub</button>
+            <button class="btn btn-default navbar-btn" {{action "signIn" "github"}}>Sign in with {{fa-icon "github"}} GitHub</button>
           {{/if}}
         </ul>
       </div><!-- /.navbar-collapse -->

@@ -35,16 +35,6 @@ export default Ember.Route.extend({
   actions: {
     invalidateModel: function(){
       this.refresh();
-    },
-
-    //temporary logout button
-    logout: function() {
-       //var controller = this.get('controller');
-       const ref = this.get('firebaseApp').auth();
-       ref.signOut().then(function() {
-         this.transitionTo('login');
-       }.bind(this));
-     }
-    },
-
+    }
+  }
 });
