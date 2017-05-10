@@ -89,7 +89,11 @@ export default Ember.Component.extend({
         alert('Sorry, That is Incorrect!');
       }
 
-      socket.send(`You answered: ${userAnswer}`);
+      let ses = this.get('session');
+
+      //socket.send(`You answered: ${userAnswer}`);
+      let obj = { user: this.email, answer: userAnswer };
+      socket.send(JSON.stringify(obj));
     },
     changeCard(card_id) {
       console.log('Changing card to ' + card_id);
