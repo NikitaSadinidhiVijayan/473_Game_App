@@ -34,7 +34,11 @@
     <!-- <button {{action 'answerCheck' card.answer}} class="btn btn-primary">Submit</button> -->
     {{a-websocket card-answer=card.answer user-answer=choice}}
     {{/each}}
+
   </div>
 </form>
+
+<button class="btn btn-danger"{{action 'logout'}}>Log Out</button>
+
 
 {{outlet}}

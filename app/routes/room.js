@@ -1,9 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
-    //return this.store.findAll('card'); // this returns all the questions
 
+  firebaseApp: Ember.inject.service(),
+  beforeModel: function(){
+    const ref = this.get('firebaseApp').auth();
+
+    //if no user logged in, will redirect to login page.
+    ref.onAuthStateChanged(function(user){
+       if(!user)
+       {
+         this.transitionTo('login');
+       }
+    }.bind(this)
+  );
+},
+
+
+  model: function(id) {
+    //return this.store.findAll('card'); // this returns all the questions
+    console.log('id is ' + id);
     let triviaCard = this.store.findAll('card').then(function(item){
 
       // change the multiplicative number at the end to
@@ -19,6 +35,16 @@ export default Ember.Route.extend({
   actions: {
     invalidateModel: function(){
       this.refresh();
-    }
-  }
+    },
+
+    //temporary logout button
+    logout: function() {
+       //var controller = this.get('controller');
+       const ref = this.get('firebaseApp').auth();
+       ref.signOut().then(function() {
+         this.transitionTo('login');
+       }.bind(this));
+     }
+    },
+
 });
