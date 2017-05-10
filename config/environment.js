@@ -30,6 +30,11 @@ module.exports = function(environment) {
       authDomain: 'trivia-66f08.firebaseapp.com',
       databaseURL: 'https://trivia-66f08.firebaseio.com/',
       storageBucket: 'trivia-66f08.appspot.com',
+    },
+
+    // Eric: Sessions
+    torii: {
+      sessionServiceName: 'session'
     }
   };
 
