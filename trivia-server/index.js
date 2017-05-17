@@ -1,8 +1,7 @@
 const WebSocket = require('ws');
 const random = require('lodash/random');
 
-const admin = require("firebase-admin");
-const serviceAccount = require('./DO_NOT_UPLOAD.json');
+let firebase = require('firebase');
 
 let messages = [];
 let active = false;
@@ -10,24 +9,28 @@ let current_card = '';
 let cards = [];
 const INTERVAL = 15000; // time in ms
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://trivia-66f08.firebaseio.com"
-});
+var config = {
+  apiKey: "AIzaSyC1f1JP8qFiNGJyy8Og_cd9VsLTP2bjVCs",
+  authDomain: "projectId.firebaseapp.com",
+  databaseURL: "trivia-66f08.firebaseio.com",
+  storageBucket: "trivia-66f08.appspot.com"
+};
+firebase.initializeApp(config);
 
 // Get a database reference to our posts
-var db = admin.database();
+var db = firebase.database();
 var ref = db.ref("cards");
 
 // Get a snapshot of the database and fill set variables
 ref.on("value", function(snapshot) {
-  //console.log(snapshot.val());
+  //console.log(snapshot.val()); // JSON of all objects in cards table
   let obj = snapshot.val();
 
   for(var k in obj) {
     cards.push(k);
   }
-  current_card = cards[random(3)];
+
+  current_card = cards[cards.length-1];
   console.log(`[Server] Database card total: ${cards.length}`);
   console.log(`[Server] Card ID list: ${cards}`);
 
